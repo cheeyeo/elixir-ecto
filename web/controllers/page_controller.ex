@@ -6,6 +6,16 @@ defmodule ElixirJobs.PageController do
 
   def index(conn, _params) do
     jobs = Queries.jobs_query
-    render conn, "index", jobs: jobs
+    user = get_session(conn, :username)
+    IO.inspect user
+    render conn, "index", [jobs: jobs, user: user]
+  end
+
+   def not_found(conn, _params) do
+    render conn, "not_found"
+  end
+
+  def error(conn, _params) do
+    render conn, "error"
   end
 end
