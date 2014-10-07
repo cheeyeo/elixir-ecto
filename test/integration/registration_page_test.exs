@@ -7,6 +7,12 @@ defmodule Integration.RegistrationPageTest do
 
   hound_session
 
+  setup_all do
+    ElixirJobs.Router.start
+    on_exit &ElixirJobs.Router.stop/0
+    :ok
+  end
+
   test "The reistration page should have New User as its heading", meta do
     navigate_to("http://localhost:4001/users/new")
     element_id = find_element(:tag, "h1")
