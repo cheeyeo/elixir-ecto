@@ -1,0 +1,6 @@
+<h1>List Of Jobs</h1>
+<ul>
+<%= for job <- @jobs do %>
+  <li><%= job.title %> - <%= job.description %></li>
+<% end %>
+</ul>
